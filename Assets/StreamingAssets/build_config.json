@@ -1,0 +1,11 @@
+{
+  "app_name": "Banana Toss",
+  "package_name": "com.yourcompany.bananatoss",
+  "version": "1.0.0",
+  "target_sdk": 30,
+  "min_sdk": 21,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE"
+  ]
+}
