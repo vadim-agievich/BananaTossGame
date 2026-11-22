@@ -38,7 +38,7 @@ public class Monkey : MonoBehaviour
         }
     }
     
-    void ThrowBanana()
+    public void ThrowBanana()
     {
         // Создаем банан
         GameObject bananaObject = Instantiate(
@@ -66,6 +66,11 @@ public class Monkey : MonoBehaviour
     public void SetDirection(Vector2 newDirection)
     {
         direction = newDirection;
+    }
+    
+    public bool IsReadyToThrow()
+    {
+        return isReadyToThrow;
     }
     
     void OnTriggerEnter2D(Collider2D other)

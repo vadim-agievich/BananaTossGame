@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance;
+    
     [Header("Level Settings")]
     public int currentLevel = 1;
     public int totalLevels = 10;
@@ -19,6 +21,19 @@ public class LevelManager : MonoBehaviour
     [Header("Game Objects")]
     public List<Monkey> monkeys;
     public List<Building> buildings;
+    
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     
     void Start()
     {

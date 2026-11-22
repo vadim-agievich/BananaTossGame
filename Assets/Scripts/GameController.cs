@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     
     [Header("Game State")]
     public bool isGameActive = false;
+    public int currentLevel = 1;
     
     void Awake()
     {
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
     public void StartLevel(int levelNumber)
     {
         // Запуск уровня
+        currentLevel = levelNumber;
         Debug.Log("Starting level " + levelNumber);
     }
     

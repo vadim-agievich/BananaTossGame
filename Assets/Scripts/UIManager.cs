@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [Header("Game State")]
     public int currentScore = 0;
     public int currentBananas = 3;
+    public int currentLevel = 1;
     
     void Start()
     {
@@ -40,13 +41,19 @@ public class UIManager : MonoBehaviour
         UpdateUI();
     }
     
+    public void UpdateLevel(int level)
+    {
+        currentLevel = level;
+        UpdateUI();
+    }
+    
     void UpdateUI()
     {
         if (scoreText != null)
             scoreText.text = "Score: " + currentScore.ToString();
             
         if (levelText != null)
-            levelText.text = "Level: " + GameController.Instance.currentLevel.ToString();
+            levelText.text = "Level: " + currentLevel.ToString();
             
         if (bananasText != null)
             bananasText.text = "Bananas: " + currentBananas.ToString();

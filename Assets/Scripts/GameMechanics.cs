@@ -82,7 +82,7 @@ public class GameMechanics : MonoBehaviour
                     monkeyScript.SetDirection(direction);
                     
                     // Проверяем, готова ли обезьяна к броску
-                    if (monkeyScript.isReadyToThrow)
+                    if (monkeyScript.IsReadyToThrow())
                     {
                         monkeyScript.ThrowBanana();
                     }

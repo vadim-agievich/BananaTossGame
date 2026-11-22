@@ -53,7 +53,7 @@ public class UIControl : MonoBehaviour
         if (monkey != null)
         {
             // Имитируем бросок
-            if (monkey.isReadyToThrow)
+            if (monkey.IsReadyToThrow())
             {
                 // Установка направления (вправо)
                 Vector2 direction = Vector2.right;
