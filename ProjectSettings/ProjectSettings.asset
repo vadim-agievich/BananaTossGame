@@ -1,0 +1,24 @@
+// Unity Project Settings for Banana Toss Game
+
+// Version control settings
+version: 1
+showGrid: 1
+snapVertices: 1
+snapLayers:
+  layer0:
+    enabled: 1
+    name: Default
+    color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    grid: 1
+    gridOffset: 0
+    gridSnap: 1
+    gridVisibility: 1
+    gridSnapOffset: 0
+    gridSize: 1
+    gridSnapSize: 1
+    snapToGrid: 1
+    snapToGridOffset: 0
+    gridOffsetX: 0
+    gridOffsetY: 0
+    gridSizeX: 1
+    gridSizeY: 1
