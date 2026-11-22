@@ -1,0 +1,73 @@
+using UnityEngine;
+using UnityEditor;
+using System.IO;
+
+public class AndroidBuildHelper : MonoBehaviour
+{
+    [MenuItem("Tools/Build Android with Custom Name")]
+    public static void BuildAndroidWithCustomName()
+    {
+        // Настройка параметров сборки
+        BuildPlayerOptions buildOptions = new BuildPlayerOptions();
+        buildOptions.scenes = new string[]
+        {
+            "Assets/Scenes/MainScene.unity",
+            "Assets/Scenes/DemoScene.unity"
+        };
+        
+        // Указываем путь для сборки
+        string outputPath = Path.Combine(Application.dataPath, "../Builds/BananaToss.apk");
+        buildOptions.locationPathName = outputPath;
+        buildOptions.target = BuildTarget.Android;
+        buildOptions.options = BuildOptions.None;
+        
+        // Сборка
+        BuildPipeline.BuildPlayer(buildOptions);
+        
+        Debug.Log("Android build completed successfully at: " + outputPath);
+        EditorUtility.RevealInFinder(outputPath);
+    }
+    
+    [MenuItem("Tools/Setup Android Manifest")]
+    public static void SetupAndroidManifest()
+    {
+        string manifestPath = Path.Combine(Application.dataPath, "Plugins/Android/AndroidManifest.xml");
+        string manifestContent = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<manifest xmlns:android=""http://schemas.android.com/apk/res/android""
+    package=""com.yourcompany.bananatoss""
+    android:versionCode=""1""
+    android:versionName=""1.0"">
+
+    <uses-sdk android:minSdkVersion=""21"" android:targetSdkVersion=""30"" />
+    
+    <uses-permission android:name=""android.permission.INTERNET"" />
+    <uses-permission android:name=""android.permission.ACCESS_NETWORK_STATE"" />
+    
+    <application
+        android:label=""Banana Toss""
+        android:icon=""@mipmap/app_icon"">
+        
+        <activity
+            android:name=""com.unity3d.player.UnityPlayerActivity""
+            android:theme=""@style/UnityThemeSelector""
+            android:configChanges=""fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|viewport|touchscreen|density""
+            android:launchMode=""singleTask""
+            android:exported=""true"">
+            
+            <intent-filter>
+                <action android:name=""android.intent.action.MAIN"" />
+                <category android:name=""android.intent.category.LAUNCHER"" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>";
+        
+        // Создание директории, если её нет
+        Directory.CreateDirectory(Path.GetDirectoryName(manifestPath));
+        
+        // Запись файла
+        File.WriteAllText(manifestPath, manifestContent);
+        
+        Debug.Log("Android Manifest created at: " + manifestPath);
+    }
+}
